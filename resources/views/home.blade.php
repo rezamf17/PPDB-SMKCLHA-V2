@@ -40,7 +40,11 @@ Dashboard
             <div class="icon">
               <i class="ion ion-settings"></i>
             </div>
+             @if(DB::table('forms')->where('id_user', Auth::user()->id)->doesntExist())             
+              <a href="#" class="small-box-footer" onclick="alert('Kamu belum isi formulir')";>Cetak Pendaftaran<i class="fas fa-arrow-circle-right" ></i></a>
+             @else
             <a href="{{ url('gantiFormulir') }}" class="small-box-footer">Ganti Data<i class="fas fa-arrow-circle-right"></i></a>
+            @endif
           </div>
         </div>
         <!-- ./col -->
