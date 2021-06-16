@@ -19,6 +19,15 @@
 	</div>
 	@endsection
 	@section('content')
+	@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+	@endif
 	@if (session('status'))
 	<div class="alert alert-success">
 		{{ session('status') }}
@@ -94,7 +103,7 @@
 							<div class="form-group">
 								@csrf
 								<label>Nama Lengkap</label>
-								<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="Nama Lengkap">
+								<input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Lengkap" required>
 								@error('nama_barang')
 								<div class="invalid-feedback">
 									{{$message}}
@@ -103,7 +112,7 @@
 							</div>
 							<div class="form-group">
 								<label>Email</label>
-								<input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="Email">
+								<input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="Email" required>
 								@error('jumlah')
 								<div class="invalid-feedback">
 									{{$message}}
@@ -112,8 +121,8 @@
 							</div>
 							<div class="form-group">
 								<label>Level</label>
-								<select name="role" class="form-control">
-									<option>--Pilih Level--</option>
+								<select name="role" class="form-control" required>
+									<option value="">--Pilih Level--</option>
 									<option value="1">Admin</option>
 									<option value="2">Calon Siswa</option>
 								</select>
@@ -125,7 +134,7 @@
 							</div>
 							<div class="form-group">
 								<label>Password</label>
-								<input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Password">
+								<input type="password" name="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Password" required>
 								@error('jumlah')
 								<div class="invalid-feedback">
 									{{$message}}
@@ -134,7 +143,7 @@
 							</div>
 							<div class="form-group">
 								<label>Konfirmasi Password</label>
-								<input type="password" name="confirmpassword" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Konfirmasi Password">
+								<input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror"  placeholder="Konfirmasi Password" required>
 								@error('jumlah')
 								<div class="invalid-feedback">
 									{{$message}}

@@ -38,7 +38,7 @@ Edit Data Akun
           @method('patch')
           @csrf
           <label>Nama Lengkap</label>
-          <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="Nama Lengkap" value="{{$users->name}}">
+          <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"placeholder="Nama Lengkap" value="{{$users->name}}">
           @error('nama_barang')
           <div class="invalid-feedback">
             {{$message}}
@@ -68,7 +68,8 @@ Edit Data Akun
         </div>
         <div class="form-group">
           <label>Password</label>
-          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Password">
+          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Password" value="{{$users->password}}">
+          *Abaikan Form Ini Jika Tidak Ingin Mengganti Password
           @error('jumlah')
           <div class="invalid-feedback">
             {{$message}}
@@ -77,7 +78,7 @@ Edit Data Akun
         </div>
         <div class="form-group">
           <label>Konfirmasi Password</label>
-          <input type="password" name="confirmpassword" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Konfirmasi Password">
+          <input type="password" name="confirmpassword" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Konfirmasi Password" value="{{$users->password}}">
           @error('jumlah')
           <div class="invalid-feedback">
             {{$message}}

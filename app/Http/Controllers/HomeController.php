@@ -41,8 +41,27 @@ class HomeController extends Controller
         $users = DB::table('users')->get();
         return view ('admin', compact('users'));
     }
+
+    public function validator(array $data)
+    {
+        return Validator::make($data, [
+            'role' => ['required'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
+    }
+
     public function adminAdd(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'email' => 'email',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        if ($request->password != $request->password_confirmation) {
+            return redirect('/admin')->with('error', 'Password Konfirmasi Harus Benar');
+        }
+
         DB::table('users')->insert([
             'name' => $request->name,
             'email' => $request->email,
