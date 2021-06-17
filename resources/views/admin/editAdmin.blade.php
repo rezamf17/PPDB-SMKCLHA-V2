@@ -22,6 +22,15 @@ Edit Data Akun
 	</div>
 	@endsection
 	@section('content')
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+  @endif
 	<div class="card">
 		<div class="card-header">
 			<h3 class="card-title">Edit Data Akun</h3>
@@ -68,7 +77,7 @@ Edit Data Akun
         </div>
         <div class="form-group">
           <label>Password</label>
-          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Password" value="{{$users->password}}">
+          <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Password">
           *Abaikan Form Ini Jika Tidak Ingin Mengganti Password
           @error('jumlah')
           <div class="invalid-feedback">
@@ -78,7 +87,7 @@ Edit Data Akun
         </div>
         <div class="form-group">
           <label>Konfirmasi Password</label>
-          <input type="password" name="confirmpassword" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Konfirmasi Password" value="{{$users->password}}">
+          <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Konfirmasi Password">
           @error('jumlah')
           <div class="invalid-feedback">
             {{$message}}

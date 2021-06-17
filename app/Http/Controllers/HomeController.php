@@ -79,13 +79,41 @@ class HomeController extends Controller
     }
     public function editProcess(Request $request, $id)
     {
-        DB::table('users')->where('id', $id)
-        ->update([
+        $this->validate($request, [
+            'name' => 'required|max:50',
+            'email' => 'email',
+            'password' => 'confirmed',
+        ]);
+
+        if ($request->password != $request->password_confirmation) {
+            return redirect('/admin')->with('error', 'Password Konfirmasi Harus Benar');
+        }
+        
+        // DB::table('users')->where('id', $id)
+        // ->update([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'role' => $request->role,
+        //     'password' => Hash::make($request->password)
+        // ]);
+
+        if ($request->password != null) {
+            DB::table('users')->where('id', $id)
+            ->update([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
             'password' => Hash::make($request->password)
         ]);
+        }else{
+            DB::table('users')->where('id', $id)
+            ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+        ]);
+        }
+
         return redirect('/admin')->with('status', 'Data akun berhasil diedit!');
     }
     public function delete($id)
