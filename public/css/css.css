@@ -234,6 +234,21 @@ th{
   position: relative;
   left: 0px;
 }
+
+.judulCara{
+  margin-top: -10px;
+}
+.gambar1{
+  width: 800px;
+  position: inherit;
+  height: 400px; 
+  text-align: center;
+}
+.gambarSimpan{
+  width: 200px;
+  height: 80px;
+  position: inherit;
+}
 @media screen and (max-width: 780px) {
 
   header, 
