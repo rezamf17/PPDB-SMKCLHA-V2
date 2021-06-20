@@ -41,15 +41,7 @@ class HomeController extends Controller
         $users = DB::table('users')->get();
         return view ('admin', compact('users'));
     }
-
-    public function validator(array $data)
-    {
-        return Validator::make($data, [
-            'role' => ['required'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
-    }
-
+    
     public function adminAdd(Request $request)
     {
         $this->validate($request, [

@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function(){
 	Route::get('/pengumuman/buatPengumuman', 'AdminController@buatPengumuman')->name('buatPengumuman');
 	Route::post('/pengumuman/buatPengumuman', 'AdminController@addPengumuman');
 	Route::get('/pengumuman/editPengumuman/{id}', 'AdminController@editPengumuman');
+	Route::patch('/pengumuman/editPengumuman/{id}', 'AdminController@editPengumumanFunction');
 	Route::delete('/pengumuman/{id}', 'AdminController@hapusPengumuman');
 	Route::get('/dashboard', 'AdminController@dashAdmin')->name('dashboard');
 	Route::get('/admin/editAdmin/{id}', 'HomeController@edit');

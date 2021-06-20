@@ -64,7 +64,7 @@ Pengumuman
     </div>
     <!-- /.card-body -->
   </div>
-  {{-- @foreach ($pengumuman as $element)
+  @foreach ($pengumuman as $element)
   <div class="card">
     <div class="card-header">
       <h3>{{$element->judul}}</h3>
@@ -74,6 +74,6 @@ Pengumuman
     </div>
 
   </div>
-  @endforeach --}}
+  @endforeach
   
   @endsection

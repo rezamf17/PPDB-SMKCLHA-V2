@@ -25,6 +25,7 @@ Edit Pengumuman
 
   <form action="{{ url('/pengumuman/editPengumuman/'.$pengumuman->id) }}" method="post" accept-charset="utf-8">
     @csrf
+    @method('patch')
     <div class="card">
     <div class="card-header">
         <h3 class="card-title">Edit Data Pengumuman</h3>

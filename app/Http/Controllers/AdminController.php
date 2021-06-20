@@ -45,10 +45,19 @@ class AdminController extends Controller
         $pengumuman = DB::table('pengumuman')->where('id', $id)->first();
         return view ('admin.editPengumuman', compact('pengumuman'));
     }
+    public function editPengumumanFunction(Request $request, $id)
+    {
+        Pengumuman::where('id', $id)
+                    ->update([
+                        'judul' => $request->judul,
+                        'isi' => $request->isi
+                    ]);
+        return redirect('/pengumuman')->with('status', 'Pengumuman berhasil diedit!');
+    }
     public function hapusPengumuman($id)
     {
-        DB::table('pengumuman')->where('id', $id)->delete();
-        return view ('admin.pengumuman', compact('pengumuman'));
+        Pengumuman::where('id', $id)->delete();
+        return redirect('/pengumuman')->with('status', 'Pengumuman berhasil dihapus!');
     }
     public function pemberitahuan()
     {
