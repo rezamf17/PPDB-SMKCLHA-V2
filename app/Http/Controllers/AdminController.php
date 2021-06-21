@@ -110,6 +110,10 @@ class AdminController extends Controller
     {
         return view('caraDaftar');
     }
+    public function cara_daftar_hp()
+    {
+        return view('caraDaftarHP');
+    }
 
     /**
      * Show the form for creating a new resource.

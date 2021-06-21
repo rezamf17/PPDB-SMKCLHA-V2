@@ -22,6 +22,7 @@ Route::get('/', function () {
 // });
 Route::get('/pemberitahuan', 'AdminController@pemberitahuan')->name('pemberitahuan');
 Route::get('/caraDaftar', 'AdminController@cara_daftar')->name('caraDaftar');
+Route::get('/caraDaftarHP', 'AdminController@cara_daftar_hp')->name('caraDaftarHP');
 Auth::routes();
 // Route::get('/admin', ['HomeController@admin'])->name('admin')->middleware('role');
 // Route::get('/home', 'HomeController@index')->name('home');

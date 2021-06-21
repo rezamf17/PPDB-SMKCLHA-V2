@@ -33,7 +33,14 @@
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <ul>
                     <li><a href="/" title=""><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-                    <li><a href="{{ url('caraDaftar') }}" title=""><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Cara Daftar</a></li>
+                   {{--  <li><a href="{{ url('caraDaftar') }}" title=""><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Cara Daftar</a></li> --}}
+                    <li><div class="dropdown">
+                        <a href="#" class=""><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Cara Daftar</a>
+                            <div class="dropdown-content">
+                        <a href="{{ url('caraDaftar') }}">Cara Daftar Lewat Laptop/PC</a>
+                        <a href="{{ url('caraDaftarHP') }}">Cara Daftar Lewat HP</a>
+                      </div>
+                    </div></li>
                     <li><a href="{{ url('pemberitahuan') }}" title=""><i class="fa fa-bullhorn" aria-hidden="true"></i>Pengumuman</a></li>
                     <li><a href="{{ route('login') }}" title=""><i class="fa fa-lock" aria-hidden="true"></i>Login</a></li>
                 </ul>
