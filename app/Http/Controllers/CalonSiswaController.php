@@ -113,4 +113,9 @@ class CalonSiswaController extends Controller
         $pengumuman = Pengumuman::all();
         return view ('calonsiswa.pengumuman', compact('pengumuman'));
     }
+
+    public function upload()
+    {
+        return view ('calonsiswa.uploadFile');
+    }
 }

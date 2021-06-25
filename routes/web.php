@@ -58,5 +58,6 @@ Route::group(['middleware' => ['auth', 'role:2']], function(){
 	Route::get('/gantiFormulir', 'CalonSiswaController@editFormulir')->name('gantiFormulir');
 	Route::patch('/gantiFormulir', 'CalonSiswaController@editFormProcess')->name('gantiFormulir');
 	Route::get('/pengumumanSiswa', 'CalonSiswaController@pengumumanSiswa')->name('pengumumanSiswa');
+	Route::get('/uploadFile', 'CalonSiswaController@upload')->name('uploadFile');
 	// Route::get('/admin', 'HomeController@admin')->name('admin');
 });

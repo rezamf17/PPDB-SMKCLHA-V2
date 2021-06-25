@@ -41,14 +41,14 @@ Dashboard
               <i class="ion ion-settings"></i>
             </div>
              @if(DB::table('forms')->where('id_user', Auth::user()->id)->doesntExist())             
-              <a href="#" class="small-box-footer" onclick="alert('Kamu belum isi formulir')";>Cetak Pendaftaran<i class="fas fa-arrow-circle-right" ></i></a>
+              <a href="#" class="small-box-footer" onclick="alert('Kamu belum isi formulir')";>Ganti Formulir<i class="fas fa-arrow-circle-right" ></i></a>
              @else
             <a href="{{ url('gantiFormulir') }}" class="small-box-footer">Ganti Data<i class="fas fa-arrow-circle-right"></i></a>
             @endif
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
@@ -64,6 +64,20 @@ Dashboard
             @else
             <a href="{{ url('cetak') }}" class="small-box-footer">Cetak Pendaftaran<i class="fas fa-arrow-circle-right"></i></a>
             @endif
+          </div>
+        </div> --}}
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h5>Upload File</h5>
+
+              <p>Upload file untuk melengkapi persyaratan pendaftaran</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-upload"></i>
+            </div>
+            <a href="{{url('uploadFile')}}" class="small-box-footer">Upload File<i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-6">
