@@ -61,6 +61,7 @@ class HomeController extends Controller
             'password' => Hash::make($request->password)
         ]);
         return redirect('/admin')->with('status', 'Data akun berhasil ditambahkan!');
+        // return $request;
     }
     public function edit($id)
     {

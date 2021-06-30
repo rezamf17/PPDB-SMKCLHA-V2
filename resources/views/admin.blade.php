@@ -64,8 +64,10 @@
 						<td>{{$item->email}}</td>
 						<td>@if ($item->role == 1)
 							Admin
-							@else
+							@elseif($item->role == 2)
 							Calon Siswa
+							@else
+							Panitia
 							@endif
 						</td>
 						<th>
@@ -125,6 +127,7 @@
 									<option value="">--Pilih Level--</option>
 									<option value="1">Admin</option>
 									<option value="2">Calon Siswa</option>
+									<option value="3">Panitia</option>
 								</select>
 								@error('jumlah')
 								<div class="invalid-feedback">

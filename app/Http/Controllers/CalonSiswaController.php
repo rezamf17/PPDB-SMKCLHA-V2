@@ -8,6 +8,7 @@ use Auth;
 use PDF;
 use App\Form;
 use App\Pengumuman;
+use App\File;
 
 class CalonSiswaController extends Controller
 {
@@ -116,6 +117,33 @@ class CalonSiswaController extends Controller
 
     public function upload()
     {
-        return view ('calonsiswa.uploadFile');
+        $files = File::all();
+        return view ('calonsiswa.uploadFile', compact('files'));
+    }
+
+    public function uploadFile(Request $request)
+    {
+
+        //  $validatedData = $request->validate([
+        //  'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
+ 
+        // ]);
+                $data = new File;
+                // $fileName = time().'.'.$request->ijazah->getClientOriginalName();  
+                $request->ijazah->move(public_path('uploads'), time().'.'.$request->ijazah->getClientOriginalName());
+                $request->kk->move(public_path('uploads'), time().'.'.$request->kk->getClientOriginalName());
+                $request->akte->move(public_path('uploads'), time().'.'.$request->akte->getClientOriginalName());
+                $request->skkb->move(public_path('uploads'), time().'.'.$request->skkb->getClientOriginalName());
+                $request->bukti_tf->move(public_path('uploads'), time().'.'.$request->bukti_tf->getClientOriginalName());
+
+                $data->id_user = $request->id_user;
+                $data->ijazah =  time().'.'.$request->ijazah->getClientOriginalName();
+                $data->kk =  time().'.'.$request->kk->getClientOriginalName();
+                $data->akte =  time().'.'.$request->akte->getClientOriginalName();
+                $data->skkb =  time().'.'.$request->skkb->getClientOriginalName();
+                $data->bukti_tf =  time().'.'.$request->bukti_tf->getClientOriginalName();
+                $data->save();
+        return redirect('/home')->with('status', 'Upload file berhasil!');
+        // return $request;
     }
 }

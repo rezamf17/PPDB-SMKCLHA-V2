@@ -48,7 +48,7 @@ class CreateFormsTable extends Migration
             $table->string('nama_wali')->nullable();
             $table->string('pekerjaan_wali')->nullable();
             $table->string('pendidikan_wali')->nullable();
-            $table->string('penghasilan_wali'->nullable());
+            $table->string('penghasilan_wali')->nullable();
             $table->string('tahun_lahir_wali')->nullable();
             $table->string('jenis_prestasi')->nullable();
             $table->string('tingkat')->nullable();

@@ -233,6 +233,16 @@
               </a>
             </li>
             @endif
+            @if(auth()->user()->role == 3)
+           <li class="nav-item has-treeview">
+            <a href="{{route('panitia')}}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+            @endif
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

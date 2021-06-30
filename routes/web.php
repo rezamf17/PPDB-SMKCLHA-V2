@@ -59,5 +59,9 @@ Route::group(['middleware' => ['auth', 'role:2']], function(){
 	Route::patch('/gantiFormulir', 'CalonSiswaController@editFormProcess')->name('gantiFormulir');
 	Route::get('/pengumumanSiswa', 'CalonSiswaController@pengumumanSiswa')->name('pengumumanSiswa');
 	Route::get('/uploadFile', 'CalonSiswaController@upload')->name('uploadFile');
+	Route::post('/upload', 'CalonSiswaController@uploadFile')->name('upload');
 	// Route::get('/admin', 'HomeController@admin')->name('admin');
+});
+Route::group(['middleware' => ['auth', 'role:3']], function(){
+	Route::get('/panitia', 'PanitiaController@index')->name('panitia');
 });
