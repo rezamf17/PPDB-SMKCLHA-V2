@@ -101,6 +101,7 @@ Upload File
 				<thead>
 					<tr>
 						<th>No</th>
+						<th>Nama Calon Siswa</th>
 						<th>Ijazah</th>
 						<th>Kartu Keluarga</th>
 						<th>Akte Kelahiran</th>
@@ -113,10 +114,38 @@ Upload File
 					@foreach ($files as $element)
 					<tr>
 						<td>{{ $loop->iteration}}</td>
-						<td>{{ $element->ijazah}}</td>
-						<td>{{ $element->kk}}</td>
-						<td>{{ $element->skkb}}</td>
-						<td>{{ $element->bukti_tf}}</td>
+						<td>{{ $element->user->name}}</td>
+						<td>
+							@if ($element->ijazah != null)
+							<i class="fa fa-check" style="color:green"></i>
+							@else
+							<i class="fa fa-times" style="color:red"></i>
+							@endif
+						</td>
+						<td>@if ($element->kk != null)
+							<i class="fa fa-check" style="color:green"></i>
+							@else
+							<i class="fa fa-times" style="color:red"></i>
+							@endif
+						</td>
+						<td>@if ($element->akte != null)
+							<i class="fa fa-check" style="color:green"></i>
+							@else
+							<i class="fa fa-times" style="color:red"></i>
+							@endif
+						</td>
+						<td>@if ($element->skkb != null)
+							<i class="fa fa-check" style="color:green"></i>
+							@else
+							<i class="fa fa-times" style="color:red"></i>
+							@endif
+						</td>
+						<td>@if ($element->bukti_tf != null)
+							<i class="fa fa-check" style="color:green"></i>
+							@else
+							<i class="fa fa-times" style="color:red"></i>
+							@endif
+						</td>
 						<th>
 							<a href="{{}}" class="btn btn-success">Lihat</a>
 						</th>
