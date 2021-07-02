@@ -35,124 +35,146 @@ Upload File
 			<input type="file" class="custom-file-input" name="">
 			 <label class="custom-file-label" for="customFile">Pilih file</label>
 			</div> --}}
-				
-			<div class="card-body">
-			<form action="{{ url('/upload') }}" method="POST" enctype="multipart/form-data">
-				@csrf
-				<div style="display: none;">
-					<input type="text" value="{{ Auth::user()->id }}" name="id_user">
-				</div>
-				<div class="form-group">
-				    <label for="exampleFormControlFile1">Ijazah</label>
-				    <input type="file" name="ijazah" class="form-control-file">
-				    *File harus berformat png, jpg, jpeg, pdf
-				 </div>
-				 <div class="form-group">
-				    <label for="exampleFormControlFile1">Kartu Keluarga</label>
-				    <input type="file" name="kk" class="form-control-file">
-				    *File harus berformat png, jpg, jpeg, pdf
-				 </div>
-				 <div class="form-group">
-				    <label for="exampleFormControlFile1">Akte Kelahiran</label>
-				    <input type="file" name="akte" class="form-control-file">
-				    *File harus berformat png, jpg, jpeg, pdf
-				 </div>
-				 <div class="form-group">
-				    <label for="exampleFormControlFile1">Surat Keterangan Kelakuan Baik (Dari Sekolah Asal)</label>
-				    <input type="file" name="skkb" class="form-control-file">
-				    *File harus berformat png, jpg, jpeg, pdf
-				 </div>
-				 <div class="form-group">
-				    <label for="exampleFormControlFile1">Bukti Pembayaran</label>
-				    <input type="file" name="bukti_tf" class="form-control-file">
-				    *File harus berformat png, jpg, jpeg, pdf
-				 </div>
-				{{-- <div class="custom-file mb-5">
-					<input type="file" class="custom-file-input" name="ijazash">
-			 		<label class="custom-file-label" for="customFile">Ijazah</label>
-			 		*File harus berformat png, jpg, jpeg, pdf
-				</div>
-				<div class="custom-file mb-5">
-					<input type="file" class="custom-file-input" name="kk">
-			 		<label class="custom-file-label" for="customFile">Kartu Keluarga</label>
-			 		*File harus berformat png, jpg, jpeg, pdf
-				</div>
-				<div class="custom-file mb-5">
-					<input type="file" class="custom-file-input" name="akte">
-			 		<label class="custom-file-label" for="customFile">Akte Kelahiran</label>
-			 		*File harus berformat png, jpg, jpeg, pdf
-				</div>
-				<div class="custom-file mb-5">
-					<input type="file" class="custom-file-input" name="skkb">
-			 		<label class="custom-file-label" for="customFile">Surat Keterangan Kelakuan Baik (Dari Sekolah Asal)</label>
-			 		*File harus berformat png, jpg, jpeg, pdf
-				</div>
-				<div class="custom-file mb-5">
-					<input type="file" class="custom-file-input" name="bukti_tf">
-			 		<label class="custom-file-label" for="customFile">Bukti Pembayaran</label>
-			 		*File harus berformat png, jpg, jpeg, pdf
-				</div> --}}
-				<button type="submit" class="btn btn-primary">Upload</button>
-				<a href="{{url('home')}}" class="btn btn-default">Batal</a>
-			</form>	
 
-			<table id="example1" class="table table-bordered table-striped">
-				<caption>table title and/or explanatory text</caption>
-				<thead>
-					<tr>
-						<th>No</th>
-						<th>Nama Calon Siswa</th>
-						<th>Ijazah</th>
-						<th>Kartu Keluarga</th>
-						<th>Akte Kelahiran</th>
-						<th>SKKB</th>
-						<th>Bukti Transfer</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach ($files as $element)
-					<tr>
-						<td>{{ $loop->iteration}}</td>
-						<td>{{ $element->user->name}}</td>
-						<td>
-							@if ($element->ijazah != null)
-							<i class="fa fa-check" style="color:green"></i>
-							@else
-							<i class="fa fa-times" style="color:red"></i>
-							@endif
-						</td>
-						<td>@if ($element->kk != null)
-							<i class="fa fa-check" style="color:green"></i>
-							@else
-							<i class="fa fa-times" style="color:red"></i>
-							@endif
-						</td>
-						<td>@if ($element->akte != null)
-							<i class="fa fa-check" style="color:green"></i>
-							@else
-							<i class="fa fa-times" style="color:red"></i>
-							@endif
-						</td>
-						<td>@if ($element->skkb != null)
-							<i class="fa fa-check" style="color:green"></i>
-							@else
-							<i class="fa fa-times" style="color:red"></i>
-							@endif
-						</td>
-						<td>@if ($element->bukti_tf != null)
-							<i class="fa fa-check" style="color:green"></i>
-							@else
-							<i class="fa fa-times" style="color:red"></i>
-							@endif
-						</td>
-						<th>
-							<a href="{{}}" class="btn btn-success">Lihat</a>
-						</th>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
+			<div class="card-body">
+				<form action="{{ url('/upload') }}" method="POST" enctype="multipart/form-data">
+					@csrf
+					<div style="display: none;">
+						<input type="text" value="{{ Auth::user()->id }}" name="id_user">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Ijazah</label>
+						<input type="file" name="ijazah" class="form-control-file" required>
+						*File harus berformat png, jpg, jpeg, pdf
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Kartu Keluarga</label>
+						<input type="file" name="kk" class="form-control-file" >
+						*File harus berformat png, jpg, jpeg, pdf
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Akte Kelahiran</label>
+						<input type="file" name="akte" class="form-control-file" >
+						*File harus berformat png, jpg, jpeg, pdf
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Surat Keterangan Kelakuan Baik (Dari Sekolah Asal)</label>
+						<input type="file" name="skkb" class="form-control-file" >
+						*File harus berformat png, jpg, jpeg, pdf
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Bukti Pembayaran</label>
+						<input type="file" name="bukti_tf" class="form-control-file" >
+						*File harus berformat png, jpg, jpeg, pdf
+					</div>
+					<br>
+					@if (DB::table('files')->where('id_user', Auth::user()->id)->exists())
+					<p>Kamu Sudah Upload File<i class="fa fa-check" style="color:green"></i></p>
+					@else
+					<p>Kamu Belum Upload File<i class="fa fa-times" style="color:red"></i></p>
+					@endif
+
+
+					@if (DB::table('files')->where('id_user', Auth::user()->id)->exists())
+					<a href="#" class="btn btn-primary" onclick="alert('Kamu sudah upload file, jika salah upload file, klik tombol Reset');">Upload</a>
+					@else
+					<button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i>Upload</button>
+					@endif
+					<a href="{{url('home')}}" class="btn btn-default">Batal</a>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-sm">
+					<i class="fa fa-undo"></i>Reset
+				</button>
+				</form>	
+				{{-- MODAL --}}
+				
+				
+				<table id="example1" class="table table-bordered table-striped">
+					<caption>table title and/or explanatory text</caption>
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>Nama Calon Siswa</th>
+							<th>Ijazah</th>
+							<th>Kartu Keluarga</th>
+							<th>Akte Kelahiran</th>
+							<th>SKKB</th>
+							<th>Bukti Transfer</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach ($files as $element)
+						<tr>
+							<td>{{ $loop->iteration}}</td>
+							<td>{{ $element->user->name}}</td>
+							<td>
+								@if ($element->ijazah != null)
+								<i class="fa fa-check" style="color:green"></i>
+								@else
+								<i class="fa fa-times" style="color:red"></i>
+								@endif
+							</td>
+							<td>@if ($element->kk != null)
+								<i class="fa fa-check" style="color:green"></i>
+								@else
+								<i class="fa fa-times" style="color:red"></i>
+								@endif
+							</td>
+							<td>@if ($element->akte != null)
+								<i class="fa fa-check" style="color:green"></i>
+								@else
+								<i class="fa fa-times" style="color:red"></i>
+								@endif
+							</td>
+							<td>@if ($element->skkb != null)
+								<i class="fa fa-check" style="color:green"></i>
+								@else
+								<i class="fa fa-times" style="color:red"></i>
+								@endif
+							</td>
+							<td>@if ($element->bukti_tf != null)
+								<i class="fa fa-check" style="color:green"></i>
+								@else
+								<i class="fa fa-times" style="color:red"></i>
+								@endif
+							</td>
+							<th>
+								{{-- <a href="{{}}" class="btn btn-success">Lihat</a> --}}
+								{{-- <form action="{{url('reset/'.$element->id)}}" method="post" accept-charset="utf-8">
+									@method('delete')
+									@csrf
+									<button type="submit" class="btn btn-danger">Hapus</button>
+								</form> --}}
+							</th>
+						</tr>
+						<div class="modal fade" id="modal-sm">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title">Reset</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>Apa Kamu Yakin Ingin Mengulangi Upload File?</p>
+							</div>
+							<div class="modal-footer justify-content-between">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+								<form action="{{url('reset/'.$element->id)}}" method="post" accept-charset="utf-8">
+									@method('delete')
+									@csrf
+									<button type="submit" class="btn btn-primary">Ya</button>
+								</form>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+						@endforeach
+					</tbody>
+				</table>
 			</div>
 		</div>
 		@endsection
