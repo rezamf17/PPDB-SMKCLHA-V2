@@ -44,7 +44,7 @@ Upload File
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlFile1">Ijazah</label>
-						<input type="file" name="ijazah" class="form-control-file" required>
+						<input type="file" name="ijazah" class="form-control-file">
 						*File harus berformat png, jpg, jpeg, pdf
 					</div>
 					<div class="form-group">
@@ -64,7 +64,7 @@ Upload File
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlFile1">Bukti Pembayaran</label>
-						<input type="file" name="bukti_tf" class="form-control-file" >
+						<input type="file" name="bukti_tf" class="form-control-file" required>
 						*File harus berformat png, jpg, jpeg, pdf
 					</div>
 					<br>
@@ -139,12 +139,7 @@ Upload File
 								@endif
 							</td>
 							<th>
-								{{-- <a href="{{}}" class="btn btn-success">Lihat</a> --}}
-								{{-- <form action="{{url('reset/'.$element->id)}}" method="post" accept-charset="utf-8">
-									@method('delete')
-									@csrf
-									<button type="submit" class="btn btn-danger">Hapus</button>
-								</form> --}}
+								<a href="{{url('lihat/'.$element->id)}}" class="btn btn-success">Lihat</a>
 							</th>
 						</tr>
 						<div class="modal fade" id="modal-sm">
@@ -161,7 +156,7 @@ Upload File
 							</div>
 							<div class="modal-footer justify-content-between">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-								<form action="{{url('reset/'.$element->id)}}" method="post" accept-charset="utf-8">
+								<form action="{{url('reset/'.Auth::user()->id)}}" method="post" accept-charset="utf-8">
 									@method('delete')
 									@csrf
 									<button type="submit" class="btn btn-primary">Ya</button>

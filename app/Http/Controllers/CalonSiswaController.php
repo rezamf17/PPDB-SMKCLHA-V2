@@ -129,44 +129,67 @@ class CalonSiswaController extends Controller
  
         // ]);
 
-        $ijazah = $request->ijazah;
-        $kk = $request->kk;
-        $akte = $request->akte;
-        $skkb = $request->skkb;
-        $bukti_tf = $request->bukti_tf;
-        $namaIjazah = $ijazah->getClientOriginalName();
-        $namaKk = $kk->getClientOriginalName();
-        $namaAkte = $akte->getClientOriginalName();
-        $namaSkkb = $skkb->getClientOriginalName();
-        $namaBukti_tf = $bukti_tf->getClientOriginalName();
-
+        // $ijazah = $request->ijazah;
+        // $kk = $request->kk;
+        // $akte = $request->akte;
+        // $skkb = $request->skkb;
+        // $bukti_tf = $request->bukti_tf;
+        // $ijazah = $request->file('ijazah');
+        // $kk = $request->file('kk');
+        // $akte = $request->file('akte');
+        // $skkb = $request->file('skkb');
+        // $bukti_tf = $request->file('bukti_tf');
+        // $namaIjazah = time().".".$ijazah->getClientOriginalName();
+        // $namaKk = time().".".$kk->getClientOriginalName();
+        // $namaAkte = time().".".$akte->getClientOriginalName();
+        // $namaSkkb = time().".".$skkb->getClientOriginalName();
+        // $namaBukti_tf = time().".".$bukti_tf->getClientOriginalName();
         $fileUpload = new File;
+        if ($request->file('ijazah')) {
+            $ijazah = $request->file('ijazah');
+            $namaIjazah = time().".".$ijazah->getClientOriginalName();
+            $ijazah->move(public_path().'/uploads', $namaIjazah);
+            $fileUpload->ijazah = $namaIjazah;
+        }
+        if ($request->file('kk')) {
+            $kk = $request->file('kk');
+            $namaKk = time().".".$kk->getClientOriginalName();
+            $kk->move(public_path().'/uploads', $namaKk);
+            $fileUpload->kk = $namaKk;
+        }
+        if ($request->file('akte')) {
+            $akte = $request->file('akte');
+            $namaAkte = time().".".$akte->getClientOriginalName();
+            $akte->move(public_path().'/uploads', $namaAkte);
+            $fileUpload->akte = $namaAkte;
+        }
+        if ($request->file('skkb')) {
+            $skkb = $request->file('skkb');
+            $namaSkkb = time().".".$kk->getClientOriginalName();
+            $skkb->move(public_path().'/uploads', $namaSkkb);
+            $fileUpload->skkb = $namaSkkb;
+        }
+        if ($request->file('bukti_tf')) {
+            $bukti_tf = $request->file('bukti_tf');
+            $namaBukti_tf = time().".".$bukti_tf->getClientOriginalName();
+            $bukti_tf->move(public_path().'/uploads', $namaBukti_tf);
+            $fileUpload->bukti_tf = $namaBukti_tf;
+        }
         $fileUpload->id_user = $request->id_user;
-        $fileUpload->ijazah = $namaIjazah;
-        $fileUpload->kk = $namaKk;
-        $fileUpload->akte = $namaAkte;
-        $fileUpload->skkb = $namaSkkb;
-        $fileUpload->bukti_tf = $namaBukti_tf;
+        // $fileUpload->ijazah = $namaIjazah;
+        // $fileUpload->kk = $namaKk;
+        // $fileUpload->akte = $namaAkte;
+        // $fileUpload->skkb = $namaSkkb;
+        // $fileUpload->bukti_tf = $namaBukti_tf;
+
+        // $ijazah->move(public_path().'/uploads', $namaIjazah);
+        // $kk->move(public_path().'/uploads', $namaKk);
+        // $akte->move(public_path().'/uploads', $namaAkte);
+        // $skkb->move(public_path().'/uploads', $namaSkkb);
+        // $bukti_tf->move(public_path().'/uploads', $namaBukti_tf);
         $fileUpload->save();
 
-                // $data = new File;
-                // $fileIjazah = time().'.'.$request->ijazah->getClientOriginalName();  
-                // $request->ijazah->move(public_path('uploads'), $fileIjazah);
-                // $request->kk->move(public_path('uploads'), time().'.'.$request->kk->getClientOriginalName());
-                // $request->akte->move(public_path('uploads'), time().'.'.$request->akte->getClientOriginalName());
-                // $request->skkb->move(public_path('uploads'), time().'.'.$request->skkb->getClientOriginalName());
-                // $request->bukti_tf->move(public_path('uploads'), time().'.'.$request->bukti_tf->getClientOriginalName());
-
-                // $data->id_user = $request->id_user;
-                // $data->ijazah = $fileIjazah;
-                // $data->ijazah =  time().'.'.$request->ijazah->getClientOriginalName();
-                // $data->kk =  time().'.'.$request->kk->getClientOriginalName();
-                // $data->akte =  time().'.'.$request->akte->getClientOriginalName();
-                // $data->skkb =  time().'.'.$request->skkb->getClientOriginalName();
-                // $data->bukti_tf =  time().'.'.$request->bukti_tf->getClientOriginalName();
-                // $data->save();
-
-        return redirect('/home')->with('status', 'Upload file berhasil!');
+        return redirect('/uploadFile')->with('status', 'Upload file berhasil!');
         // return $request;
     }
 
@@ -178,9 +201,16 @@ class CalonSiswaController extends Controller
         return redirect('/uploadFile')->with('status', 'Upload file berhasil di reset!');
     }
 
-    public function hapus($id)
+    public function hapus($id_user)
     {
-        File::where('id', $id)->delete();
+        File::where('id_user', $id_user)->delete();
         return redirect('/uploadFile')->with('status', 'Upload file berhasil di hapus!');
+        // return $id_user;
+    }
+
+    public function lihat($id)
+    {
+        $data = File::find($id);
+        return view('calonsiswa.lihat', compact('data'));
     }
 }

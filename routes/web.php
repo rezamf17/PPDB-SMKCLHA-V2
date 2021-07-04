@@ -60,7 +60,8 @@ Route::group(['middleware' => ['auth', 'role:2']], function(){
 	Route::get('/pengumumanSiswa', 'CalonSiswaController@pengumumanSiswa')->name('pengumumanSiswa');
 	Route::get('/uploadFile', 'CalonSiswaController@upload')->name('uploadFile');
 	Route::post('/upload', 'CalonSiswaController@uploadFile')->name('upload');
-	Route::delete('/reset/{id}', 'CalonSiswaController@hapus')->name('reset');
+	Route::delete('/reset/{id_user}', 'CalonSiswaController@hapus')->name('reset');
+	Route::get('/lihat/{id}', 'CalonSiswaController@lihat')->name('lihat');
 	// Route::get('/admin', 'HomeController@admin')->name('admin');
 });
 Route::group(['middleware' => ['auth', 'role:3']], function(){
