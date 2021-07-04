@@ -213,4 +213,9 @@ class CalonSiswaController extends Controller
         $data = File::find($id);
         return view('calonsiswa.lihat', compact('data'));
     }
+
+    public function download($files)
+    {
+        return response()->download('uploads'. $files);
+    }
 }

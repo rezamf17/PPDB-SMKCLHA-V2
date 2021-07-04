@@ -80,6 +80,7 @@ Detail
 					</tr>
 				</tbody>
 			</table>
+			<a href="{{}}" class="btn btn-primary">Download</a>
 		</div>
 	</div>
 	@endsection
