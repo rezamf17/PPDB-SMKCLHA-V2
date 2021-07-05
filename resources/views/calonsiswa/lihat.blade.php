@@ -95,6 +95,9 @@ Detail
 					</tr>
 				</tbody>
 			</table>
+			<a onclick="window.open('{{url('cetak/'.$data->id_user)}}')" class="btn btn-primary">Lihat Formulir</a>
+			<a title="" class="btn btn-success">Diterima</a>
+			<a title="" class="btn btn-danger">Ditolak</a>
 
 		</div>
 	</div>

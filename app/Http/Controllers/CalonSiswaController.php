@@ -23,10 +23,12 @@ class CalonSiswaController extends Controller
     	return view('admin.viewCalonSiswa', compact('vCalonSiswa'));
     }
 
-    public function Cetakformulir()
+    public function Cetakformulir($id)
     {
-    	$cetakform = DB::table('forms')->where('id_user', Auth::user()->id)
-    	->get();
+    	// $cetakform = DB::table('forms')->where('id_user', Auth::user()->id)
+    	// ->get();
+        $cetakform = DB::table('forms')->where('id_user',$id)
+        ->get();
     	$pdf = PDF::loadview('calonsiswa.cetak', $cetakform, compact('cetakform'))->setPaper('A4', 'potrait');
         ini_set('max_execution_time', 300);
         return $pdf->stream();
@@ -125,13 +127,12 @@ class CalonSiswaController extends Controller
     {
 
         $request->validate([
-         'ijazah' => 'required|image|max:2048',
-         'kk' => 'required|image|max:2048',
-         'akte' => 'required|image|max:2048',
-         'skkb' => 'required|image|max:2048',
-         'bukti_tf' => 'required|image|max:2048',
- 
-        ]);
+            'ijazah' => 'mimes:png,jpg,jpeg,pdf|max:2048',
+            'kk' => 'mimes:png,jpg,jpeg,pdf|max:2048',
+            // 'akte' => 'mimes:png,jpg,jpeg,pdf|max:2048',
+            // 'skkb' => 'mimes:png,jpg,jpeg,pdf|max:2048',
+            'bukti_tf' => 'required|mimes:png,jpg,jpeg,pdf|max:2048'
+            ]);
 
         // $ijazah = $request->ijazah;
         // $kk = $request->kk;
@@ -149,7 +150,6 @@ class CalonSiswaController extends Controller
         // $namaSkkb = time().".".$skkb->getClientOriginalName();
         // $namaBukti_tf = time().".".$bukti_tf->getClientOriginalName();
         $fileUpload = new File;
-        $files = File::all();
         $fileName = Auth::user()->name;
         if ($request->file('ijazah')) {
             $ijazah = $request->file('ijazah');
@@ -159,25 +159,25 @@ class CalonSiswaController extends Controller
         }
         if ($request->file('kk')) {
             $kk = $request->file('kk');
-            $namaKk = time().".".$kk->getClientOriginalName();
+            $namaKk = $fileName.'KK'.$kk->getClientOriginalName();
             $kk->move(public_path().'/uploads', $namaKk);
             $fileUpload->kk = $namaKk;
         }
         if ($request->file('akte')) {
             $akte = $request->file('akte');
-            $namaAkte = time().".".$akte->getClientOriginalName();
+            $namaAkte = $fileName.'AKTE'.$akte->getClientOriginalName();
             $akte->move(public_path().'/uploads', $namaAkte);
             $fileUpload->akte = $namaAkte;
         }
         if ($request->file('skkb')) {
             $skkb = $request->file('skkb');
-            $namaSkkb = time().".".$kk->getClientOriginalName();
+            $namaSkkb = $fileName.'SKKB'.$kk->getClientOriginalName();
             $skkb->move(public_path().'/uploads', $namaSkkb);
             $fileUpload->skkb = $namaSkkb;
         }
         if ($request->file('bukti_tf')) {
             $bukti_tf = $request->file('bukti_tf');
-            $namaBukti_tf = time().".".$bukti_tf->getClientOriginalName();
+            $namaBukti_tf = $fileName.'BUKTI TF'.$bukti_tf->getClientOriginalName();
             $bukti_tf->move(public_path().'/uploads', $namaBukti_tf);
             $fileUpload->bukti_tf = $namaBukti_tf;
         }
@@ -194,6 +194,7 @@ class CalonSiswaController extends Controller
         // $skkb->move(public_path().'/uploads', $namaSkkb);
         // $bukti_tf->move(public_path().'/uploads', $namaBukti_tf);
         $fileUpload->save();
+
 
         return redirect('/uploadFile')->with('status', 'Upload file berhasil!');
         // return $request;

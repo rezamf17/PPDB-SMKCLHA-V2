@@ -53,7 +53,7 @@ Route::group(['middleware' => ['auth', 'role:2']], function(){
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::get('/formulir', 'CalonSiswaController@index')->name('formulir');
 	Route::post('/formulir', 'CalonSiswaController@formulirAdd');
-	Route::get('/cetak', 'CalonSiswaController@Cetakformulir')->name('cetak');
+	Route::get('/cetak/{id}', 'CalonSiswaController@Cetakformulir')->name('cetak');
 	Route::resource('forms', 'FormController');
 	Route::get('/gantiFormulir', 'CalonSiswaController@editFormulir')->name('gantiFormulir');
 	Route::patch('/gantiFormulir', 'CalonSiswaController@editFormProcess')->name('gantiFormulir');
