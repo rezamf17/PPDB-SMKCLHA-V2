@@ -179,10 +179,16 @@
                     <p>Ganti Formulir</p>
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a href="{{ url('cetak') }}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Cetak Pendaftaran</p>
+                  </a>
+                </li> --}}
+                <li class="nav-item">
+                  <a href="{{ url('uploadFile') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Upload File</p>
                   </a>
                 </li>
                 <li class="nav-item">

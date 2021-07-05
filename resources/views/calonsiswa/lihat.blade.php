@@ -41,46 +41,61 @@ Detail
 					<tr>
 						<th>Ijazah</th>
 						<td>
-							<div class="embed-responsive embed-responsive-4by3">
+							<div class="embed-responsive embed-responsive-1by1">
 							  <iframe class="embed-responsive-item" src="{{url('uploads/'.$data->ijazah)}}"></iframe>
 							</div>
+						</td>
+						<td><a href="{{url('downloadIjazah/'.$data->ijazah)}}" class="btn btn-primary">Download</a>
+							<a onclick="window.open('{{url('uploads/'.$data->ijazah)}}');" class="btn btn-success">Lihat</a>
 						</td>
 					</tr>
 					<tr>
 						<th>Kartu Keluarga</th>
 						<td>
-							<div class="embed-responsive embed-responsive-4by3">
+							<div class="embed-responsive embed-responsive-1by1">
 							  <iframe class="embed-responsive-item" src="{{url('uploads/'.$data->kk)}}"></iframe>
 							</div>
+						</td>
+						<td><a href="{{url('downloadIjazah/'.$data->kk)}}" class="btn btn-primary">Download</a>
+						<a onclick="window.open('{{url('uploads/'.$data->kk)}}');" class="btn btn-success">Lihat</a>
 						</td>
 					</tr>
 					<tr>
 						<th>Akte</th>
 						<td>
-							<div class="embed-responsive embed-responsive-4by3">
+							<div class="embed-responsive embed-responsive-1by1">
 							  <iframe class="embed-responsive-item" src="{{url('uploads/'.$data->akte)}}"></iframe>
 							</div>
+						</td>
+						<td><a href="{{url('downloadIjazah/'.$data->akte)}}" class="btn btn-primary">Download</a>
+						<a onclick="window.open('{{url('uploads/'.$data->akte)}}');" class="btn btn-success">Lihat</a>
 						</td>
 					</tr>
 					<tr>
 						<th>Surat Keterangan Kelakuan Baik</th>
 						<td>
-							<div class="embed-responsive embed-responsive-4by3">
+							<div class="embed-responsive embed-responsive-1by1">
 							  <iframe class="embed-responsive-item" src="{{url('uploads/'.$data->skkb)}}"></iframe>
 							</div>
+						</td>
+						<td><a href="{{url('downloadIjazah/'.$data->skkb)}}" class="btn btn-primary">Download</a>
+						<a onclick="window.open('{{url('uploads/'.$data->skkb)}}');" class="btn btn-success">Lihat</a>
 						</td>
 					</tr>
 					<tr>
 						<th>Bukti Pembayaran</th>
 						<td>
-							<div class="embed-responsive embed-responsive-4by3">
+							<div class="embed-responsive embed-responsive-1by1">
 							  <iframe class="embed-responsive-item" src="{{url('uploads/'.$data->bukti_tf)}}"></iframe>
 							</div>
+						</td>
+						<td><a href="{{url('downloadIjazah/'.$data->bukti_tf)}}" class="btn btn-primary">Download</a>
+						<a onclick="window.open('{{url('uploads/'.$data->bukti_tf)}}');" class="btn btn-success">Lihat</a>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<a href="{{}}" class="btn btn-primary">Download</a>
+
 		</div>
 	</div>
 	@endsection

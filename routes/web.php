@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth', 'role:2']], function(){
 	Route::post('/upload', 'CalonSiswaController@uploadFile')->name('upload');
 	Route::delete('/reset/{id_user}', 'CalonSiswaController@hapus')->name('reset');
 	Route::get('/lihat/{id}', 'CalonSiswaController@lihat')->name('lihat');
-	Route::get('/download/{id}', 'CalonSiswaController@download')->name('download');
+	Route::get('/downloadIjazah/{id}', 'CalonSiswaController@downloadIjazah')->name('downloadIjazah');
 	// Route::get('/admin', 'HomeController@admin')->name('admin');
 });
 Route::group(['middleware' => ['auth', 'role:3']], function(){

@@ -124,10 +124,14 @@ class CalonSiswaController extends Controller
     public function uploadFile(Request $request)
     {
 
-        //  $validatedData = $request->validate([
-        //  'file' => 'required|csv,txt,xlx,xls,pdf|max:2048',
+        $request->validate([
+         'ijazah' => 'required|image|max:2048',
+         'kk' => 'required|image|max:2048',
+         'akte' => 'required|image|max:2048',
+         'skkb' => 'required|image|max:2048',
+         'bukti_tf' => 'required|image|max:2048',
  
-        // ]);
+        ]);
 
         // $ijazah = $request->ijazah;
         // $kk = $request->kk;
@@ -145,9 +149,11 @@ class CalonSiswaController extends Controller
         // $namaSkkb = time().".".$skkb->getClientOriginalName();
         // $namaBukti_tf = time().".".$bukti_tf->getClientOriginalName();
         $fileUpload = new File;
+        $files = File::all();
+        $fileName = Auth::user()->name;
         if ($request->file('ijazah')) {
             $ijazah = $request->file('ijazah');
-            $namaIjazah = time().".".$ijazah->getClientOriginalName();
+            $namaIjazah = $fileName.'IJAZAH'.$ijazah->getClientOriginalName();
             $ijazah->move(public_path().'/uploads', $namaIjazah);
             $fileUpload->ijazah = $namaIjazah;
         }
@@ -214,8 +220,8 @@ class CalonSiswaController extends Controller
         return view('calonsiswa.lihat', compact('data'));
     }
 
-    public function download($files)
+    public function downloadIjazah($ijazah)
     {
-        return response()->download('uploads'. $files);
+        return response()->download('uploads/'. $ijazah);
     }
 }
