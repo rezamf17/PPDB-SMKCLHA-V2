@@ -9,6 +9,7 @@ use PDF;
 use App\Form;
 use App\Pengumuman;
 use App\File;
+use App\User;
 
 class CalonSiswaController extends Controller
 {
@@ -211,18 +212,9 @@ class CalonSiswaController extends Controller
     public function hapus($id_user)
     {
         File::where('id_user', $id_user)->delete();
-        return redirect('/uploadFile')->with('status', 'Upload file berhasil di hapus!');
+        return redirect('/uploadFile')->with('status', 'Upload file berhasil di reset!');
         // return $id_user;
     }
 
-    public function lihat($id)
-    {
-        $data = File::find($id);
-        return view('calonsiswa.lihat', compact('data'));
-    }
-
-    public function downloadIjazah($ijazah)
-    {
-        return response()->download('uploads/'. $ijazah);
-    }
+   
 }

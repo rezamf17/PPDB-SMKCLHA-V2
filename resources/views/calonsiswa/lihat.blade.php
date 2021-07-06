@@ -96,8 +96,16 @@ Detail
 				</tbody>
 			</table>
 			<a onclick="window.open('{{url('cetak/'.$data->id_user)}}')" class="btn btn-primary">Lihat Formulir</a>
-			<a title="" class="btn btn-success">Diterima</a>
-			<a title="" class="btn btn-danger">Ditolak</a>
+			<form action="{{url('diterima/'.$data->id_user)}}" class="d-inline" method="post" >
+				@method('patch')
+				@csrf
+				<button class="btn btn-success" type="submit">Diterima</button>
+			</form>
+			<form action="{{url('ditolak/'.$data->id_user)}}" class="d-inline" method="post" >
+				@method('patch')
+				@csrf
+				<button class="btn btn-danger" type="submit">Ditolak</button>
+			</form>
 
 		</div>
 	</div>

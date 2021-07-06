@@ -1,4 +1,7 @@
 @extends('layouts.temp')
+@section('title')
+Dashboard
+@endsection
 @section('breadcrumb')
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
@@ -123,7 +126,7 @@
 							</div>
 							<div class="form-group">
 								<label>Level</label>
-								<select name="role" class="form-control" required>
+								<select name="role" class="form-control" id="main_menu" required>
 									<option value="">--Pilih Level--</option>
 									<option value="1">Admin</option>
 									<option value="2">Calon Siswa</option>
@@ -135,6 +138,9 @@
 								</div>
 								@enderror
 							</div>
+							<select name="status" style="display: none;" id="sub_menu" >
+
+							</select>
 							<div class="form-group">
 								<label>Password</label>
 								<input type="password" name="password" class="form-control @error('password') is-invalid @enderror"  placeholder="Password" required>
@@ -163,4 +169,25 @@
 				<!-- /.modal-content -->
 			</div>
 			<!-- /.modal-dialog -->
+			<script>
+		var role={
+			1:['Admin/Panitia'],
+			2:['Menunggu'],
+			3:['Admin/Panitia'],
+		}
+
+		var main = document.getElementById('main_menu');
+		var sub = document.getElementById('sub_menu');
+
+		main.addEventListener('change', function(){
+			var selected_option = role[this.value];
+			while(sub.options.length > 0){
+				sub.options.remove(0);
+			}
+			Array.from(selected_option).forEach(function(el){
+				let option = new Option(el, el);
+				sub.appendChild(option);
+			});
+		});
+	</script>
 			@endsection

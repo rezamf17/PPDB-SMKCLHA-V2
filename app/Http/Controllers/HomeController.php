@@ -32,7 +32,8 @@ class HomeController extends Controller
         // $formulir = DB::table('forms')->where('id', $id)->first();
         $formulir = DB::table('forms')->where('id_user', '=',  Auth::user()->id)->count();
         $id = Auth::user()->id;
-        return view('home', compact('formulir', 'id', 'formulirTab','ss','dd'));
+        $status = User::find($id);
+        return view('home', compact('formulir', 'id', 'formulirTab', 'status'));
         // return $formulir;
         // var_dump($formulir);
     }
@@ -58,6 +59,7 @@ class HomeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
+            'status' => $request->status,
             'password' => Hash::make($request->password)
         ]);
         return redirect('/admin')->with('status', 'Data akun berhasil ditambahkan!');

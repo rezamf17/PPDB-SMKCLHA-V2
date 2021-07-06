@@ -86,63 +86,9 @@ Upload File
 				</button>
 				</form>	
 				{{-- MODAL --}}
-				
-				
-				<table id="example1" class="table table-bordered table-striped">
-					<caption>table title and/or explanatory text</caption>
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Nama Calon Siswa</th>
-							<th>Ijazah</th>
-							<th>Kartu Keluarga</th>
-							<th>Akte Kelahiran</th>
-							<th>SKKB</th>
-							<th>Bukti Transfer</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach ($files as $element)
-						<tr>
-							<td>{{ $loop->iteration}}</td>
-							<td>{{ $element->user->name}}</td>
-							<td>
-								@if ($element->ijazah != null)
-								<i class="fa fa-check" style="color:green"></i>
-								@else
-								<i class="fa fa-times" style="color:red"></i>
-								@endif
-							</td>
-							<td>@if ($element->kk != null)
-								<i class="fa fa-check" style="color:green"></i>
-								@else
-								<i class="fa fa-times" style="color:red"></i>
-								@endif
-							</td>
-							<td>@if ($element->akte != null)
-								<i class="fa fa-check" style="color:green"></i>
-								@else
-								<i class="fa fa-times" style="color:red"></i>
-								@endif
-							</td>
-							<td>@if ($element->skkb != null)
-								<i class="fa fa-check" style="color:green"></i>
-								@else
-								<i class="fa fa-times" style="color:red"></i>
-								@endif
-							</td>
-							<td>@if ($element->bukti_tf != null)
-								<i class="fa fa-check" style="color:green"></i>
-								@else
-								<i class="fa fa-times" style="color:red"></i>
-								@endif
-							</td>
-							<th>
-								<a href="{{url('lihat/'.$element->id)}}" class="btn btn-success">Lihat</a>
-							</th>
-						</tr>
-						<div class="modal fade" id="modal-sm">
+			</div>
+		</div>
+		<div class="modal fade" id="modal-sm">
 					<div class="modal-dialog modal-sm">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -155,7 +101,7 @@ Upload File
 								<p>Apa Kamu Yakin Ingin Mengulangi Upload File?</p>
 							</div>
 							<div class="modal-footer justify-content-between">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+								<a href="{{url('home')}}" class="btn btn-default">Batal</a>
 								<form action="{{url('reset/'.Auth::user()->id)}}" method="post" accept-charset="utf-8">
 									@method('delete')
 									@csrf
@@ -167,9 +113,4 @@ Upload File
 					</div>
 					<!-- /.modal-dialog -->
 				</div>
-						@endforeach
-					</tbody>
-				</table>
-			</div>
-		</div>
 		@endsection
