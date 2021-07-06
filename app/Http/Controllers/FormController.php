@@ -90,7 +90,7 @@ class FormController extends Controller
 
         Form::create($request->all());
 
-        return redirect('/forms')->with('status', 'Formulir berhasil disimpan!');
+        return redirect('/home')->with('status', 'Formulir berhasil disimpan!');
     }
 
     /**

@@ -109,7 +109,7 @@ class CalonSiswaController extends Controller
             'tahun' => $request->tahun,
             'penyelenggara' => $request->penyelenggara
         ]);
-         return redirect('/gantiFormulir')->with('status', 'Data formulir berhasil diganti!');
+         return redirect('/home')->with('status', 'Data formulir berhasil diganti!');
     }
 
     public function pengumumanSiswa()
@@ -197,7 +197,7 @@ class CalonSiswaController extends Controller
         $fileUpload->save();
 
 
-        return redirect('/uploadFile')->with('status', 'Upload file berhasil!');
+        return redirect('/home')->with('status', 'Upload file berhasil!');
         // return $request;
     }
 

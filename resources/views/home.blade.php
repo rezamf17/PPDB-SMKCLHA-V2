@@ -22,7 +22,11 @@ Dashboard
   </div>
   @endsection
 @section('content')
-
+@if (session('status'))
+  <div class="alert alert-success">
+    {{ session('status') }}
+  </div>
+  @endif
 <div class="card">
   <div class="card-header">
     Dashboard
@@ -99,7 +103,11 @@ Dashboard
             <div class="icon">
               <i class="ion ion-upload"></i>
             </div>
+             @if(DB::table('forms')->where('id_user', Auth::user()->id)->doesntExist())
+             <a href="#" class="small-box-footer" onclick="alert('Kamu belum isi formulir')";>Upload File<i class="fas fa-arrow-circle-right" ></i></a>
+            @else
             <a href="{{url('uploadFile')}}" class="small-box-footer">Upload File<i class="fas fa-arrow-circle-right"></i></a>
+            @endif
           </div>
         </div>
         <div class="col-lg-3 col-6">
