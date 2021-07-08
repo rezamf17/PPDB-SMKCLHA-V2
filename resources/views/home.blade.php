@@ -121,7 +121,7 @@ Dashboard
             <div class="icon">
               <i class="ion ion-information"></i>
             </div>
-            <a href="#" class="small-box-footer">Cara Daftar<i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{url('caraDaftar')}}" class="small-box-footer">Cara Daftar<i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-6">
