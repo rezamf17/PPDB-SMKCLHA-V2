@@ -98,6 +98,7 @@ class HomeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
+            'status' => $request->status,
             'password' => Hash::make($request->password)
         ]);
         }else{
@@ -106,6 +107,7 @@ class HomeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
+            'status' => $request->status
         ]);
         }
 

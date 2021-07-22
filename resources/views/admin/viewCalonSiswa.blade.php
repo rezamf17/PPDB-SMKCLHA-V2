@@ -26,7 +26,7 @@ Data Calon Siswa
 		<div class="card-header">
 			<h3 class="card-title">Data Calon Siswa</h3>
 			<div class="float-right">
-				<a href="{{ url('cetak/'.$vCalonSiswa->id) }}" class="btn btn-success"><i class="fa fa-print"></i>Print</a>
+				<a href="{{ url('print/'.$vCalonSiswa->id) }}" class="btn btn-success"><i class="fa fa-print"></i>Print</a>
 				<a href="{{ url('calonsiswa') }}" class="btn btn-default"><i class="fa fa-undo btn-sm"></i>Kembali</a>
 			</div>
 		</div>

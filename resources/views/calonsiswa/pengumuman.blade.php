@@ -22,10 +22,12 @@ Pengumuman
 	</div>
 	@endsection
 @section('content')
-<a href="{{ url('home') }}" class="btn btn-default"><i class="fa fa-undo"></i>Kembali</a>
 @foreach ($pengumuman as $element)
 	<div class="card">
 		<div class="card-header">
+			<div class="float-right">
+				<a href="{{ url('home') }}" class="btn btn-default"><i class="fa fa-undo"></i>Kembali</a>
+			</div>
 			<h3>{{$element->judul}}</h3>
 		</div>
 			<div class="card-body">

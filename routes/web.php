@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth', 'role:1']], function(){
 	Route::patch('/admin/{id}', 'HomeController@editProcess');
 	Route::delete('/admin/{id}', 'HomeController@delete');
 	Route::get('viewCalonSiswa/{id}', 'CalonSiswaController@viewCalonSiswa')->name('viewCalonSiswa');
-	Route::get('cetak/{id}', 'AdminController@cetakSiswa')->name('cetak');
+	Route::get('print/{id}', 'AdminController@cetakSiswa')->name('cetak');
 	Route::get('cetakDataAkun', 'AdminController@cetak_data_akun')->name('cetakDataAkun');
 	Route::get('cetakCalonSiswa', 'AdminController@cetak_data_siswa')->name('cetakCalonSiswa');
 	Route::get('exportDataAkun', 'AdminController@dataAkun_export')->name('exportDataAkun');
@@ -69,5 +69,7 @@ Route::group(['middleware' => ['auth', 'role:3']], function(){
 	Route::get('/downloadIjazah/{id}', 'PanitiaController@downloadIjazah')->name('downloadIjazah');
 	Route::patch('/diterima/{id_user}', 'PanitiaController@diterima')->name('diterima');
 	Route::patch('/ditolak/{id_user}', 'PanitiaController@ditolak')->name('ditolak');
+	Route::get('/cetak/{id}', 'CalonSiswaController@Cetakformulir')->name('cetak');
+	// Route::get('cetak/{id}', 'AdminController@cetakSiswa')->name('cetak');
 	// Route::get('/admin', 'HomeController@admin')->name('admin');
 });

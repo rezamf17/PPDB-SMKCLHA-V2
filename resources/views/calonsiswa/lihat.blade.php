@@ -30,6 +30,9 @@ Detail
 	<div class="card">
 		<div class="card-header">
 			Detail Data File Calon Siswa
+			<div class="float-right">
+				<a href="{{url('panitia')}}" class="btn btn-default"><i class="fa fa-undo"></i>Kembali</a>
+			</div>
 		</div>
 		<div class="card-body">
 			<table id="example1" class="table">

@@ -76,8 +76,10 @@
 					<td>{{$element->email}}</td>
 					<td>@if ($element->role == 1)
 							Admin
-							@else
+							@elseif($element->role == 2)
 							Calon Siswa
+							@else
+							Panitia
 							@endif</td>
 				</tr>
 			</tbody>

@@ -33,11 +33,11 @@ Buat Pengumuman
     <div class="card-body">
         <div class="form-group">
           <label>Judul</label>
-          <input type="text" placeholder="Judul Pengumuman" class="form-control" name="judul">
+          <input type="text" placeholder="Judul Pengumuman" class="form-control" name="judul" required>
         </div>
         <div class="form-group">
           <label>Isi</label>
-          <textarea name="isi" placeholder="Isi Pengumuman" class="textarea" rows="5"></textarea>
+          <textarea name="isi" placeholder="Isi Pengumuman" class="textarea" rows="5" required></textarea>
         </div>
         <div class="card-footer">
           <button class="btn btn-primary"><i class="fas fa-save mr-1"></i>Simpan</button>

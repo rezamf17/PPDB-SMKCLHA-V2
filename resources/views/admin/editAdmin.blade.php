@@ -65,9 +65,10 @@ Edit Data Akun
         </div>
         <div class="form-group">
           <label>Level</label>
-          <select name="role" class="form-control">
+          <select name="role" class="form-control" id="main_menu" >
            <option value="1" @if($users->role == 1) selected @endif>Admin</option>
           <option value="2" @if($users->role == 2) selected @endif>Calon Siswa</option>
+          <option value="3" @if($users->role == 3) selected @endif>Panitia</option>
           </select>
           @error('role')
           <div class="invalid-feedback">
@@ -75,6 +76,9 @@ Edit Data Akun
           </div>
           @enderror
         </div>
+        <select name="status" style="display:none ;" id="sub_menu" >
+
+              </select>
         <div class="form-group">
           <label>Password</label>
           <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="exampleInputEmail1" placeholder="Password">
@@ -101,5 +105,25 @@ Edit Data Akun
     </div>
   </div>
 </div>
+<script>
+    var role={
+      1:['Admin/Panitia'],
+      2:['Menunggu'],
+      3:['Admin/Panitia'],
+    }
 
+    var main = document.getElementById('main_menu');
+    var sub = document.getElementById('sub_menu');
+
+    main.addEventListener('change', function(){
+      var selected_option = role[this.value];
+      while(sub.options.length > 0){
+        sub.options.remove(0);
+      }
+      Array.from(selected_option).forEach(function(el){
+        let option = new Option(el, el);
+        sub.appendChild(option);
+      });
+    });
+  </script>
 @endsection
