@@ -77,7 +77,9 @@ Edit Data Akun
           @enderror
         </div>
         <select name="status" style="display:none ;" id="sub_menu" >
-
+              <option value="1" @if($users->role == 1) selected @endif>Admin</option>
+          <option value="2" @if($users->role == 2) selected @endif>Calon Siswa</option>
+          <option value="3" @if($users->role == 3) selected @endif>Panitia</option>
               </select>
         <div class="form-group">
           <label>Password</label>
