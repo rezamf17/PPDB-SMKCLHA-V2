@@ -16,7 +16,7 @@ class FormController extends Controller
     public function index()
     {
         $datasiswa = DB::table('forms')->get();
-        return view ('calonsiswa.formulir', compact('forms'));
+        return view ('calonsiswa.formulir');
     }
 
     public function print()
